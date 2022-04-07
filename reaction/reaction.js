@@ -8,6 +8,8 @@ var timeoutDebutChrono;
 var debutTour = false;
 var debutJeu = false;
 var debutChrono = false;
+var listeTempsReaction = []
+var tour = 0
 
 var tour = 1;
 var listeTempsReaction = [];
@@ -18,8 +20,8 @@ function demarrerTour() {
     timeoutDebutChrono = setTimeout(demarrerChrono, delaiDebutJeu)
 
     zone.style.backgroundColor = rouge
-    zone_header.textContent = "Prépares-toi ..."
-    zone_texte.textContent = ""
+    zone_header.textContent = 'Prépares-toi ...'
+    zone_texte.textContent = ''
 }
 
 function demarrerJeu() {
@@ -28,12 +30,14 @@ function demarrerJeu() {
 }
 
 function finirJeu() {
+    fin = true
     debutJeu = false
     var tempsMoyen = calculMoyenne()
     tour = 0
 
-    zone_header.textContent = "Fin de jeu !"
-    zone_texte.textContent = "Temps moyen : " + tempsMoyen + " ms."
+    zone_header.textContent = 'Fin de jeu!'
+    zone_texte.textContent = 'Temps moyen : ' + tempsMoyen + ' ms.'
+    btn_rejouer.style.display = 'none'
 }
 
 // Calcul moyenne du temps de réaction
@@ -52,8 +56,8 @@ function demarrerChrono() {
     debutChrono = true
 
     zone.style.backgroundColor = vert
-    zone_header.textContent = "Clique !"
-    zone_texte.textContent = ""
+    zone_header.textContent = 'Cliques !'
+    zone_texte.textContent = ''
 
     heureDebutChrono = Date.now()
 }
@@ -69,8 +73,8 @@ function finirTour() {
         var tempsReaction = heureFinJeu - heureDebutChrono
         listeTempsReaction.push(tempsReaction)
 
-        zone_header.textContent = tempsReaction + " ms."
-        zone_texte.textContent = "Fin du tour. Cliques pour rejouer"
+        zone_header.textContent = tempsReaction + ' ms'
+        zone_texte.textContent = 'Cliques pour continuer.'
 
         tour = tour + 1
         if (tour > 5) {
@@ -78,8 +82,8 @@ function finirTour() {
         }
 
     } else {
-        zone_header.textContent = "Trop tôt !"
-        zone_texte.textContent = ""
+        zone_header.textContent = 'Trop tôt!'
+        zone_texte.textContent = 'Cliques pour réessayer.'
     }
 
     debutChrono = false
@@ -91,13 +95,16 @@ window.onload = function () {
     var zone = document.getElementById('zone')
     var zone_header = document.getElementById('zone_header')
     var zone_texte = document.getElementById('zone_texte')
+    var btn_rejouer = document.getElementById('btn_rejouer')
 
     // On utilise une fonction anonyme car elle n'a pas besoin d'être réutilisée
     zone.onclick = function () {
 
         if (!debutJeu)
             demarrerJeu()
-
+        else if (fin) {
+             break
+        }
         else if (!debutTour) {
             demarrerTour()
         } else {
