@@ -21,13 +21,14 @@ window.onload = function () {
         var classe;
         var caractere = texte[index];
         var caractereAffiche = caractere;
+        var elementSupprime;
 
         if (e.key == 'Backspace') {
             var elementSupprime = listeCaracteresFormates.pop();
             if (!elementSupprime.includes('caractere_en_trop')) {
                 index -= 1;
             }
-            majTexteEcrit();
+            majTexte();
             return; // si la touche est backspace, on n'éxécute pas le reste de la fonction
         }
         if (e.key == 'Shift') {
@@ -48,11 +49,11 @@ window.onload = function () {
 
         var caractereFormate = `<span class="${classe}">${caractereAffiche}</span>`;
         listeCaracteresFormates.push(caractereFormate);
-        majTexteEcrit();
+        majTexte();
     });
 }
 
-function majTexteEcrit() {
+function majTexte() {
 
     var texteEcrit = '';
     listeCaracteresFormates.forEach(element => {
