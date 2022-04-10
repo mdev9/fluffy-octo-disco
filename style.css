@@ -3,3 +3,25 @@
     height: 20vh;
     width: 100vw;
 }
+
+.caractere_bon{
+    color: #e5f4f4;
+}
+
+.caractere_mauvais{
+    color: #da3333;
+}
+
+.caractere_en_trop{
+    color: #791717;
+}
+
+
+p{
+    color: #53565a;
+}
+
+
+body{
+    background-color: #181818
+}

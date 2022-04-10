@@ -4,18 +4,24 @@ const bleu = '#1E88E5'
 
 var heureDebutChrono;
 var timeoutDebutChrono;
+var tour;
 
-var debutTour = false;
-var debutJeu = false;
+var jeu = false;
+var tour = false;
 var debutChrono = false;
 var listeTempsReaction = []
-var tour;
 var fin = false;
 
 
 
+function demarrerJeu() {
+    tour = 4
+    jeu = true
+    div_fin_jeu.style.display = 'none'
+    demarrerTour()
+}
+
 function demarrerTour() {
-    debutTour = true
     var delaiDebutJeu = 3000 + Math.random() * 2000
     timeoutDebutChrono = setTimeout(demarrerChrono, delaiDebutJeu)
 
@@ -23,35 +29,6 @@ function demarrerTour() {
     zone_header.textContent = 'Prépares-toi ...'
     zone_texte.textContent = ''
 
-}
-
-function demarrerJeu() {
-    tour = 4
-    debutJeu = true
-    div_fin_jeu.style.display = 'none'
-    demarrerTour()
-}
-
-function finirJeu() {
-    debutJeu = false
-    var tempsMoyen = calculMoyenne()
-    tour = 0
-
-    zone_header.textContent = 'Fin de jeu!'
-    zone_texte.textContent = 'Temps moyen : ' + tempsMoyen + ' ms.'
-    div_fin_jeu.style.display = 'block'
-
-}
-
-// Calcul moyenne du temps de réaction
-function calculMoyenne() {
-
-    var tempsTotal = 0
-    listeTempsReaction.forEach(function (temps) {
-        tempsTotal = tempsTotal + temps
-    })
-
-    return tempsTotal / listeTempsReaction.length
 }
 
 function demarrerChrono() {
@@ -64,7 +41,6 @@ function demarrerChrono() {
 
     heureDebutChrono = Date.now()
 }
-
 
 function finirTour() {
     clearTimeout(timeoutDebutChrono)
@@ -90,8 +66,29 @@ function finirTour() {
     }
 
     debutChrono = false
-    debutTour = false
 }
+
+// Calcul de la moyenne du temps de réaction
+function calculMoyenne() {
+
+    var tempsTotal = 0
+    listeTempsReaction.forEach(function (temps) {
+        tempsTotal = tempsTotal + temps
+    })
+
+    return tempsTotal / listeTempsReaction.length
+}
+
+function finirJeu() {
+    jeu = false
+    tour = false
+    var tempsMoyen = calculMoyenne()
+
+    zone_header.textContent = 'Fin de jeu!'
+    zone_texte.textContent = 'Temps moyen : ' + tempsMoyen + ' ms.'
+    div_fin_jeu.style.display = 'block'
+}
+
 
 
 window.onload = function () {
@@ -107,9 +104,9 @@ window.onload = function () {
     // On utilise une fonction anonyme car elle n'a pas besoin d'être réutilisée
     zone.onclick = function () {
 
-        if (!debutJeu)
+        if (!jeu)
             demarrerJeu()
-        else if (!debutTour) {
+        else if (!tour) {
             demarrerTour()
         } else {
             finirTour()
@@ -120,6 +117,9 @@ window.onload = function () {
     btn_retour.onclick = function () {
         location.href = '../index.html'
     }
-    btn_rejouer.onclick = demarrerJeu()
+    btn_rejouer.onclick = function () {
+        jeu = false
+        demarrerJeu()
+    }
 
 }
