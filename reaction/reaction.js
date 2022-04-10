@@ -9,10 +9,10 @@ var debutTour = false;
 var debutJeu = false;
 var debutChrono = false;
 var listeTempsReaction = []
-var tour = 0
+var tour;
+var fin = false;
 
-var tour = 1;
-var listeTempsReaction = [];
+
 
 function demarrerTour() {
     debutTour = true
@@ -22,22 +22,25 @@ function demarrerTour() {
     zone.style.backgroundColor = rouge
     zone_header.textContent = 'Prépares-toi ...'
     zone_texte.textContent = ''
+
 }
 
 function demarrerJeu() {
+    tour = 4
     debutJeu = true
+    div_fin_jeu.style.display = 'none'
     demarrerTour()
 }
 
 function finirJeu() {
-    fin = true
     debutJeu = false
     var tempsMoyen = calculMoyenne()
     tour = 0
 
     zone_header.textContent = 'Fin de jeu!'
     zone_texte.textContent = 'Temps moyen : ' + tempsMoyen + ' ms.'
-    btn_rejouer.style.display = 'none'
+    div_fin_jeu.style.display = 'block'
+
 }
 
 // Calcul moyenne du temps de réaction
@@ -77,7 +80,7 @@ function finirTour() {
         zone_texte.textContent = 'Cliques pour continuer.'
 
         tour = tour + 1
-        if (tour > 5) {
+        if (tour >= 5) {
             finirJeu()
         }
 
@@ -90,26 +93,33 @@ function finirTour() {
     debutTour = false
 }
 
+
 window.onload = function () {
 
     var zone = document.getElementById('zone')
     var zone_header = document.getElementById('zone_header')
     var zone_texte = document.getElementById('zone_texte')
     var btn_rejouer = document.getElementById('btn_rejouer')
+    var div_fin_jeu = document.getElementById('div_fin_jeu')
+    var btn_retour = document.getElementById('btn_retour')
+
 
     // On utilise une fonction anonyme car elle n'a pas besoin d'être réutilisée
     zone.onclick = function () {
 
         if (!debutJeu)
             demarrerJeu()
-        else if (fin) {
-             break
-        }
         else if (!debutTour) {
             demarrerTour()
         } else {
             finirTour()
         }
     }
+
+    div_fin_jeu.style.display = 'none'
+    btn_retour.onclick = function () {
+        location.href = '../index.html'
+    }
+    btn_rejouer.onclick = demarrerJeu()
 
 }
