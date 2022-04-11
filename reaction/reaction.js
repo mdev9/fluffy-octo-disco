@@ -15,7 +15,7 @@ var fin = false;
 
 
 function demarrerJeu() {
-    tour = 4
+    tour = 0
     jeu = true
     div_fin_jeu.style.display = 'none'
     demarrerTour()
@@ -26,7 +26,7 @@ function demarrerTour() {
     timeoutDebutChrono = setTimeout(demarrerChrono, delaiDebutJeu)
 
     zone.style.backgroundColor = rouge
-    zone_header.textContent = 'Prépares-toi ...'
+    zone_header.textContent = 'Prépare-toi ...'
     zone_texte.textContent = ''
 
 }
@@ -36,7 +36,7 @@ function demarrerChrono() {
     debutChrono = true
 
     zone.style.backgroundColor = vert
-    zone_header.textContent = 'Cliques !'
+    zone_header.textContent = 'Clique !'
     zone_texte.textContent = ''
 
     heureDebutChrono = Date.now()
@@ -53,7 +53,7 @@ function finirTour() {
         listeTempsReaction.push(tempsReaction)
 
         zone_header.textContent = tempsReaction + ' ms'
-        zone_texte.textContent = 'Cliques pour continuer.'
+        zone_texte.textContent = 'Clique pour continuer.'
 
         tour = tour + 1
         if (tour >= 5) {
@@ -62,7 +62,7 @@ function finirTour() {
 
     } else {
         zone_header.textContent = 'Trop tôt!'
-        zone_texte.textContent = 'Cliques pour réessayer.'
+        zone_texte.textContent = 'Clique pour réessayer.'
     }
 
     debutChrono = false

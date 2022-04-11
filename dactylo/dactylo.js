@@ -5,14 +5,13 @@ var listeCaracteresFormates = [];
 
 
 
-
 window.onload = function () {
-    var p_texte = document.getElementById('p_texte');
-    var p_texte_ecrit = document.getElementById('p_texte_ecrit');
+    var span_texte = document.getElementById('span_texte');
+    var span_texte_ecrit = document.getElementById('span_texte_ecrit');
     var btn_recommencer = document.getElementById('btn_recommencer');
     var textarea = document.getElementById('textarea');
 
-    p_texte.innerText = texte;
+    span_texte.innerText = texte;
 
 
     textarea.addEventListener('keydown', function (e) {
@@ -59,6 +58,6 @@ function majTexte() {
     listeCaracteresFormates.forEach(element => {
         texteEcrit += element;
     });
-    p_texte_ecrit.innerHTML = texteEcrit;
+    span_texte_ecrit.innerHTML = texteEcrit;
 
 }
