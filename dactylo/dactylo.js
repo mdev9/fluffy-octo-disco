@@ -10,12 +10,11 @@ window.onload = function () {
     var span_texte = document.getElementById('span_texte');
     var span_texte_ecrit = document.getElementById('span_texte_ecrit');
     var btn_recommencer = document.getElementById('btn_recommencer');
-    var textarea = document.getElementById('textarea');
 
     span_texte.innerText = texte;
 
 
-    textarea.addEventListener('keydown', function (e) {
+    window.addEventListener('keydown', function (e) {
         // e est un objet contenant les métadonnées de l'évenement
 
         var classe;
