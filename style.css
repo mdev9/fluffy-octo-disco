@@ -28,3 +28,10 @@ body{
     background-color: #181818;
     font-family: 'Roboto Mono', monospace;
 }
+
+footer{
+    text-align: right;
+    color: rgb(160, 160, 160);
+    line-height: 1.69;
+    font-size: 14px;
+}
