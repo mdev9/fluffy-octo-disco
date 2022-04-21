@@ -2,92 +2,11 @@ const rouge = '#EC407A'
 const vert = '#9CCC65'
 const bleu = '#1E88E5'
 
-var heureDebutChrono;
+var tempsDebutReaction;
 var timeoutDebutChrono;
 var tour;
 
-var jeu = false;
-var tour = false;
-var debutChrono = false;
 var listeTempsReaction = []
-var fin = false;
-
-
-
-function demarrerJeu() {
-    tour = 0
-    jeu = true
-    div_fin_jeu.style.display = 'none'
-    demarrerTour()
-}
-
-function demarrerTour() {
-    var delaiDebutJeu = 3000 + Math.random() * 2000
-    timeoutDebutChrono = setTimeout(demarrerChrono, delaiDebutJeu)
-
-    zone.style.backgroundColor = rouge
-    zone_header.textContent = 'Prépare-toi ...'
-    zone_texte.textContent = ''
-
-}
-
-function demarrerChrono() {
-
-    debutChrono = true
-
-    zone.style.backgroundColor = vert
-    zone_header.textContent = 'Clique !'
-    zone_texte.textContent = ''
-
-    heureDebutChrono = Date.now()
-}
-
-function finirTour() {
-    clearTimeout(timeoutDebutChrono)
-
-    zone.style.backgroundColor = bleu
-
-    if (debutChrono) {
-        var heureFinJeu = Date.now()
-        var tempsReaction = heureFinJeu - heureDebutChrono
-        listeTempsReaction.push(tempsReaction)
-
-        zone_header.textContent = tempsReaction + ' ms'
-        zone_texte.textContent = 'Clique pour continuer.'
-
-        tour = tour + 1
-        if (tour >= 5) {
-            finirJeu()
-        }
-
-    } else {
-        zone_header.textContent = 'Trop tôt!'
-        zone_texte.textContent = 'Clique pour réessayer.'
-    }
-
-    debutChrono = false
-}
-
-// Calcul de la moyenne du temps de réaction
-function calculMoyenne() {
-
-    var tempsTotal = 0
-    listeTempsReaction.forEach(function (temps) {
-        tempsTotal = tempsTotal + temps
-    })
-
-    return tempsTotal / listeTempsReaction.length
-}
-
-function finirJeu() {
-    jeu = false
-    tour = false
-    var tempsMoyen = calculMoyenne()
-
-    zone_header.textContent = 'Fin de jeu!'
-    zone_texte.textContent = 'Temps moyen : ' + tempsMoyen + ' ms.'
-    div_fin_jeu.style.display = 'block'
-}
 
 
 
@@ -104,22 +23,132 @@ window.onload = function () {
     // On utilise une fonction anonyme car elle n'a pas besoin d'être réutilisée
     zone.onclick = function () {
 
-        if (!jeu)
-            demarrerJeu()
-        else if (!tour) {
-            demarrerTour()
-        } else {
-            finirTour()
+        switch (page) {
+            case 'accueil':
+                pageAttenteSignal()
+                break;
+            case 'attente-signal':
+                pageCliqueTropTot()
+                break;
+            case 'cliques-maintenant':
+                pageTempsReaction()
+                break;
+            case 'clique-trop-tot':
+                pageAttenteSignal()
+                break;
+            case 'temps-reaction':
+                if (tour < 5) {
+                    pageAttenteSignal()
+                } else {
+                    pageFinJeu()
+                }
+                break;
+            case 'fin-jeu':
+                pageAccueil()
+                break;
         }
     }
 
-    div_fin_jeu.style.display = 'none'
     btn_retour.onclick = function () {
         location.href = '../index.html'
     }
     btn_rejouer.onclick = function () {
-        jeu = false
-        demarrerJeu()
+        pageAccueil()
     }
 
+    pageAccueil();
+}
+
+
+function pageAccueil() {
+    page = 'accueil'
+
+    div_fin_jeu.style.display = 'none'
+    zone_texte.style.display = 'block'
+    zone.style.backgroundColor = bleu
+
+    zone_header.textContent = `Teste ton temps de réaction`
+    zone_texte.innerHTML = `Quand la boîte rouge devient verte, cliques le plus rapidement possible.
+    <br>Cliques n'importe où pour commencer.`
+
+    demarrerJeu()
+}
+
+function pageAttenteSignal() {
+    page = 'attente-signal'
+    zone.style.backgroundColor = rouge
+    zone_texte.textContent = ''
+    zone_header.textContent = 'Tiens-toi prêt ...'
+
+    demarrerTour()
+}
+
+function pageCliquesMaintenant() {
+    page = 'cliques-maintenant'
+
+    zone.style.backgroundColor = vert
+    zone_header.textContent = 'Clique !'
+    zone_texte.textContent = ''
+
+    tempsDebutReaction = Date.now()
+}
+
+// Le joueur clique trop tôt
+function pageCliqueTropTot() {
+    page = 'clique-trop-tot'
+
+    zone.style.backgroundColor = bleu
+    zone_header.textContent = 'Trop tôt!'
+    zone_texte.textContent = 'Clique pour réessayer.'
+
+    clearTimeout(timeoutDebutChrono)
+}
+
+function pageTempsReaction() {
+    page = 'temps-reaction'
+
+    var tempsFinReaction = Date.now()
+    tempsReaction = tempsFinReaction - tempsDebutReaction
+
+    zone.style.backgroundColor = bleu
+    zone_header.textContent = tempsReaction + ' ms'
+    zone_texte.textContent = 'Clique pour continuer.'
+
+    clearTimeout(timeoutDebutChrono)
+    finTour(tempsReaction)
+}
+
+function pageFinJeu() {
+    page = 'fin-jeu'
+    var tempsMoyen = calculTempsReactionMoyen()
+
+    div_fin_jeu.style.display = 'block'
+    zone_header.textContent = 'Fin de jeu!'
+    zone_texte.textContent = 'Temps moyen : ' + tempsMoyen + ' ms.'
+}
+
+function demarrerJeu() {
+    tour = 0
+}
+
+function demarrerTour() {
+
+    var delaiDebutTour = 3000 + Math.random() * 2000
+    timeoutDebutChrono = setTimeout(pageCliquesMaintenant, delaiDebutTour)
+}
+
+function finTour(tempsReaction) {
+    listeTempsReaction.push(tempsReaction)
+
+    tour = tour + 1
+}
+
+function calculTempsReactionMoyen() {
+
+    var tempsTotal = 0
+    listeTempsReaction.forEach(function (temps) {
+        tempsTotal = tempsTotal + temps
+    })
+
+    return tempsTotal / listeTempsReaction.length
 }

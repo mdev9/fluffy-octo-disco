@@ -6,32 +6,55 @@
     width: 100vw;
 }
 
-.caractere_bon{
+.caractere_bon {
     color: #e5f4f4;
 }
 
-.caractere_mauvais{
+.caractere_mauvais {
     color: #da3333;
 }
 
-.caractere_en_trop{
+.caractere_en_trop {
     color: #791717;
 }
 
 
-p{
+#p_dactylo {
     color: #53565a;
 }
 
 
-body{
-    background-color: #181818;
+body {
+    /* background-color: #181818; */
     font-family: 'Roboto Mono', monospace;
+    margin: 0;
 }
 
-footer{
+footer {
     text-align: right;
     color: rgb(160, 160, 160);
-    line-height: 1.69;
+    line-height: 0.5;
     font-size: 14px;
+    padding: 20px;
+    margin: 0px auto;
+    max-width: 1010px;
+    position: relative;
+}
+
+
+#menu {
+    padding: 0px 20px;
+    margin: 0px auto;
+    max-width: 1010px;
+    position: relative;
+    font-weight: 400;
+    outline: 0;
+    box-sizing: border-box;
+    color: black;
+    font-size: 18px;
+    line-height: 1;
+}
+
+img {
+    max-height: 80px;
 }

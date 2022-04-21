@@ -4,7 +4,7 @@ var longueurTexte = texte.length;
 var index = 0;
 var texteRestant = texte;
 var listeCaracteresFormates = [];
-var heureDebutChrono;
+var tempsDebutReaction;
 var jeuCommence = false;
 var texteEcrit = '';
 
@@ -27,8 +27,9 @@ window.onload = function () {
         var caractereAffiche = caractere;
         var elementSupprime;
 
-        if (jeuCommence) {
-            heureDebutChrono = Date.now()
+        if (!jeuCommence) {
+            tempsDebutReaction = Date.now()
+            jeuCommence = true;
         }
         if (e.key == 'Backspace') {
             var elementSupprime = listeCaracteresFormates.pop();
@@ -62,23 +63,24 @@ window.onload = function () {
 
     function compteur() {
         // Mots par minute = (nombre de charactères / 5) / temps
-        var temps = Date.now - heureDebutChrono;
-        temps = temps / 3600;
-        var mpm = (texteEcrit.length / 5) / temps;
-        return mpm;
+        var temps = Date.now() - tempsDebutReaction;
+        tempsMinutes = temps / 60000;
+        console.log(temps);
+        var motsParMinute = (index / 5 / tempsMinutes).toFixed(0);
+        return motsParMinute;
     }
 
     function majTexte() {
 
-        var texteEcrit = '';
+        texteEcrit = '';
         listeCaracteresFormates.forEach(element => {
             texteEcrit += element;
-            texteRestant = texte.substring(index, longueurTexte) // Update texte restant
-            console.log(index);
+            texteRestant = texte.substring(index, longueurTexte)
+            //console.log(index);
         });
         span_texte_ecrit.innerHTML = texteEcrit;
         span_texte_restant.innerHTML = texteRestant;
-        span_mpm.innerHTML = compteur();
+        span_mpm.innerText = compteur();
 
         if (texteRestant == '') {
             finjeu()
@@ -109,3 +111,5 @@ function finjeu() {
 // texteExcrit, texteRestant, texteReference
 // Mettre à jour variable texteRestant, se baser sur les variables index et texteReference en utilisant la méthode substring()
 // majTexte() --> mettre à jour affichage de texteEcrit et texteRestant
+
+//todo: enlever la recherche ' dans la page 
