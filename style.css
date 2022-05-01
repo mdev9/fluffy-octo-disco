@@ -7,23 +7,27 @@
 }
 
 .caractere_bon {
-  color: #e5f4f4;
+  color: #212b43;
 }
 
 .caractere_mauvais {
-  color: #da3333;
+  color: #db002c;
 }
 
 .caractere_en_trop {
-  color: #791717;
+  color: #8b0303;
 }
 
-#p_dactylo {
-  color: #53565a;
+#card-dactylo {
+  background-color: #ffefef;
+}
+
+#p-dactylo {
+  color: #6bd1e7;
+  font-size: 1.3em;
 }
 
 body {
-  /* background-color: #181818; */
   font-family: "Roboto Mono", monospace;
   margin: 0;
 }
@@ -55,10 +59,28 @@ header {
   padding: 1vh;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5vw;
+  /*max-width: 1010px;
+  position: relative; */
+}
+
+
 /* https://www.w3schools.com/howto/howto_css_cards.asp */
 .card {
+  padding: 2vw; 
+  flex: 1;
+  margin: 1vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+}
+
+.card > a {
+  font-size: 1.5em;
 }
 
 .card:hover {

@@ -9,18 +9,55 @@
 </head>
 
 <body>
+    <div id="menu">
+        <header>
+            <div id="logo">
+                <a href="../index.html"></a>
+                <img src="../logo.png" alt="">
+            </div>
+        </header>
+        <nav>
+            <div id="nav_div">
+                <ul id="nav_ul">
+                    <li>
+                        <a href="../index.html">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="../reaction/reaction.html">Reaction</a>
+                    </li>
+                    <li>
+                        <a href="../dactylo/dactylo.html" class="actif">Dactylographie</a>
+                    </li>
+                    <li>
+                        <a href="../dactylo/dactylo.html">Autre</a>
+                    </li>
+                    <li>
+                        <a href="../webographie.html">Webographie</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <section>
-        <p id="p_dactylo">
-            <span id="span_texte_ecrit"></span><span id="span_texte_restant"></span>
-            <br>
-            <span id="span_mpm"></span>
-        </p>
-        </p>
-        <button id="btn_recommencer">Recommencer</button>
+        <div class="flex-container">
+            <div id="card-dactylo" class="card">
+                <p id="p-dactylo">
+                    <span id="span_texte_ecrit"></span><span id="span_texte_restant"></span>
+                    <br>
+                </p>
+                <p id="p-fin">
+                </p>
+
+                <!-- tabindex="-1" évite de focus le bouton avec les touches du clavier -->
+                <button id="btn_recommencer" tabindex="-1">Recommencer</button>
+            </div>
+        </div>
     </section>
 
     <footer>
-
+        <p>Copyright 2022 Mon site web</p>
+        <p><a href="webographie.html">Webographie</a></p>
+        <p><a href="https://github.com/mdev9/fluffy-octo-disco">GitHub</a></p>
     </footer>
 </body>
 
