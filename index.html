@@ -11,16 +11,16 @@
 <body>
     <div id="menu">
         <header>
-            <div>
-                <a id="logo" href="../index.html"></a>
+            <div id="logo">
+                <a href="../index.html"></a>
                 <img src="logo.png" alt="">
             </div>
         </header>
         <nav>
-            <div>
-                <ul>
+            <div id="nav_div">
+                <ul id="nav_ul">
                     <li>
-                        <a href="index.html">Accueil</a>
+                        <a href="index.html" class="actif">Accueil</a>
                     </li>
                     <li>
                         <a href="reaction/reaction.html">Reaction</a>
@@ -39,8 +39,14 @@
         </nav>
     </div>
     <section>
-        <a href="reaction/reaction.html">Reaction</a>
-        <a href="dactylo/dactylo.html">Dactylographie</a>
+        <div class="card">
+            <a href="reaction/reaction.html">Reaction</a>
+        </div>
+
+        <div class="card">
+            <a href="dactylo/dactylo.html">Dactylographie</a>            
+        </div>
+        
     </section>
     <footer>
         <p>Copyright 2022 Mon site web</p>
