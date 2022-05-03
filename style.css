@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
 
 #zone {
-  background-color: #1e88e5;
-  height: 20vh;
+  background-color: #ffffff;
+  height: 10em;
   width: 100vw;
 }
 
@@ -11,24 +14,25 @@
 }
 
 .caractere_mauvais {
-  color: #db002c;
+  color: #da002c;
 }
 
 .caractere_en_trop {
-  color: #8b0303;
+  color: #a30000;
 }
 
 #card-dactylo {
-  background-color: #ffefef;
+  background-color: #ffffff;
 }
 
 #p-dactylo {
-  color: #6bd1e7;
+  color: #c5c5c5;
   font-size: 1.3em;
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
 }
 
@@ -59,27 +63,38 @@ header {
   padding: 1vh;
 }
 
+section {
+  padding: 0px 20px;
+  margin: 0px auto;
+  max-width: 1010px;
+  position: relative;
+  box-sizing: border-box;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
-  margin: 5vw;
-  /*max-width: 1010px;
-  position: relative; */
 }
 
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
 /* https://www.w3schools.com/howto/howto_css_cards.asp */
 .card {
-  padding: 2vw; 
+  padding: 2em;
   flex: 1;
-  margin: 1vw;
+  margin: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  line-height: 1.5em;
 }
 
-.card > a {
+.card>a {
   font-size: 1.5em;
 }
 
@@ -117,15 +132,17 @@ nav {
   position: sticky;
   top: 0;
   width: 100%;
-  /* padding-left: 20%;
-    padding-right: 20%; */
 }
 
 li {
   float: left;
 }
 
-li a {
+.float-none {
+  float: none !important;
+}
+
+.nav_li_a {
   display: block;
   color: white;
   text-align: center;
@@ -148,4 +165,18 @@ li a:hover {
 /* Sauf si c'est l'élément actif*/
 li a:hover:not(.actif) {
   background-color: #111;
+}
+
+.centre {
+  text-align: center;
+}
+
+button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
 }

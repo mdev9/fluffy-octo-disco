@@ -1,10 +1,11 @@
 const rouge = '#EC407A'
 const vert = '#9CCC65'
-const bleu = '#1E88E5'
+const blanc = '#FFFFFF'
 
 var tempsDebutReaction;
 var timeoutDebutChrono;
-var tour;
+var tours;
+var nbTourParPage = 3;
 
 var listeTempsReaction = []
 
@@ -37,7 +38,7 @@ window.onload = function () {
                 pageAttenteSignal()
                 break;
             case 'temps-reaction':
-                if (tour < 5) {
+                if (tours < nbTourParPage) {
                     pageAttenteSignal()
                 } else {
                     pageFinJeu()
@@ -65,15 +66,16 @@ function pageAccueil() {
 
     div_fin_jeu.style.display = 'none'
     zone_texte.style.display = 'block'
-    zone.style.backgroundColor = bleu
+    zone.style.backgroundColor = blanc
 
     zone_header.textContent = `Teste ton temps de réaction`
     zone_texte.innerHTML = `Quand la boîte rouge devient verte, cliques le plus rapidement possible.
-    <br>Cliques n'importe où pour commencer.`
+    <br>Cliques n'importe où dans la boîte pour commencer.`
 
     demarrerJeu()
 }
 
+// Le joueur attends le signal pour cliquer
 function pageAttenteSignal() {
     page = 'attente-signal'
     zone.style.backgroundColor = rouge
@@ -83,6 +85,7 @@ function pageAttenteSignal() {
     demarrerTour()
 }
 
+// Le joueur doit cliquer
 function pageCliquesMaintenant() {
     page = 'cliques-maintenant'
 
@@ -97,20 +100,21 @@ function pageCliquesMaintenant() {
 function pageCliqueTropTot() {
     page = 'clique-trop-tot'
 
-    zone.style.backgroundColor = bleu
+    zone.style.backgroundColor = blanc
     zone_header.textContent = 'Trop tôt!'
     zone_texte.textContent = 'Clique pour réessayer.'
 
     clearTimeout(timeoutDebutChrono)
 }
 
+// Le joueur a son temps de réaction affiché
 function pageTempsReaction() {
     page = 'temps-reaction'
 
     var tempsFinReaction = Date.now()
     tempsReaction = tempsFinReaction - tempsDebutReaction
 
-    zone.style.backgroundColor = bleu
+    zone.style.backgroundColor = blanc
     zone_header.textContent = tempsReaction + ' ms'
     zone_texte.textContent = 'Clique pour continuer.'
 
@@ -118,6 +122,7 @@ function pageTempsReaction() {
     finTour(tempsReaction)
 }
 
+// Le joueur a fini tous les tours et obtient une moyenne de son temps de reaction
 function pageFinJeu() {
     page = 'fin-jeu'
     var tempsMoyen = calculTempsReactionMoyen()
@@ -128,7 +133,7 @@ function pageFinJeu() {
 }
 
 function demarrerJeu() {
-    tour = 0
+    tours = 0
 }
 
 function demarrerTour() {
@@ -140,7 +145,7 @@ function demarrerTour() {
 function finTour(tempsReaction) {
     listeTempsReaction.push(tempsReaction)
 
-    tour = tour + 1
+    tours = tours + 1
 }
 
 function calculTempsReactionMoyen() {

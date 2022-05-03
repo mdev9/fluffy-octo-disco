@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Webographie</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="menu">
+        <header>
+            <div id="logo">
+                <a href="../index.html"></a>
+                <img src="logo.png" alt="">
+            </div>
+        </header>
+        <nav>
+            <div id="nav_div">
+                <ul id="nav_ul">
+                    <li>
+                        <a href="index.html" class="nav_li_a">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="reaction/reaction.html" class="nav_li_a">Reaction</a>
+                    </li>
+                    <li>
+                        <a href="dactylo/dactylo.html" class="nav_li_a">Dactylographie</a>
+                    </li>
+                    <li>
+                        <a href="tutoriel.html" class="nav_li_a actif">Tutoriel</a>
+                    </li>
+                    <li>
+                        <a href="webographie.html" class="nav_li_a">Webographie</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <section>
+        <br>
+        <div class="flex-container-column">
+            <div class="card">
+                <h2>Bienvenue sur Challenge Lab !</h2>
+                <p>Ici, tu peux t'amuser et améliorer tes compétences. Tu as le choix entre deux tests : un pour tester
+                    ton temps de réaction et l'autre pour tester ta vitesse de frappe au clavier et t'entrainer pour
+                    devenir meilleur.</p>
+            </div>
+            <div class="card">
+                <h2>Comment jouer au test de réaction ?</h2>
+                <p>C'est très simple, il te suffit de cliquer <a href="reaction/reaction.html">ici</a> puis on te
+                    demandera de cliquer dès que l'écran passe au vert. Il faut répéter cela 3 fois pour obtenir une
+                    moyenne.</p>
+            </div>
+            <div class="card">
+                <h2>Comment jouer au test de dactylographie ?</h2>
+                <p>C'est encore une fois très simple, il te suffit de cliquer <a href="dactylo/dactylo.html">ici</a>. Un
+                    texte choisi aléatoirement, spécialement pour toi s'affichera sur l'écran. Si le texte ne te plait
+                    pas, tu peux rafraichir la page pour en générer un nouveau ou tu peux appuyer sur le bouton
+                    recommencer qui se situe en dessous. Tu devras le recopier le plus rapidement possible. Le texte
+                    sera de couleur grisée au départ. Tu pourra commencer à écrire quand tu voudra et le compteur de
+                    mots par minute commencera, il ne faut donc pas prendre de pauses une fois que tu aura commencé au
+                    risque d'avoir un mauvais score. Quand tu commencera à écrire,
+                    les caractères que tu aura recopiés et qui correspondent au texte qui t'es demandé seron affichés de
+                    couleur <span class="caractere_bon">noire</span>. Si tu t'es trompé et que tu a recopié le mauvais,
+                    le caractère s'affichera en <span class="caractere_mauvais">rouge</span>. Il est aussi très
+                    important de ne pas oublier les espaces pour changer de mot car si tu en loupe un, les caractères en
+                    trop
+                    s'afficherons en <span class="caractere_en_trop">rouge foncé</span>. Une fois que tu a entirement
+                    recopié le texte, il disparaitra et ton score s'affichera. Il est compté en mots par minutes (mpm ou
+                    wpm en anglais). En voici la formule: mpm = (nombre de charactères dans le texte / 5) / temps. On
+                    considère qu'un mot fait en moyenne 5 charactères et le temps est le temps écoulé en minutes depuis
+                    que le premier charactère a été recopié (qu'il soit le bon ou non).
+                </p>
+            </div>
+
+    </section>
+    <footer>
+        <p>Copyright 2022 Challenge Lab</p>
+        <p><a href="webographie.html">Webographie</a></p>
+        <p><a href="https://github.com/mdev9/fluffy-octo-disco">GitHub</a></p>
+    </footer>
+</body>
+
+</html>

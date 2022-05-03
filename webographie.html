@@ -1,4 +1,140 @@
-<!-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
-<!-- https://www.w3schools.com/css/css_navbar_vertical.asp -->
+<!DOCTYPE html>
 
+<html lang="fr">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Webographie</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="menu">
+        <header>
+            <div id="logo">
+                <a href="../index.html"></a>
+                <img src="logo.png" alt="">
+            </div>
+        </header>
+        <nav>
+            <div id="nav_div">
+                <ul id="nav_ul">
+                    <li>
+                        <a href="index.html" class="nav_li_a">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="reaction/reaction.html" class="nav_li_a">Reaction</a>
+                    </li>
+                    <li>
+                        <a href="dactylo/dactylo.html" class="nav_li_a">Dactylographie</a>
+                    </li>
+                    <li>
+                        <a href="tutoriel.html" class="nav_li_a">Tutoriel</a>
+                    </li>
+                    <li>
+                        <a href="webographie.html" class="nav_li_a actif">Webographie</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <section>
+        <br>
+        <div class="flex-container-column">
+            <div class="card">
+                <h2>Inspiration</h2>
+                <p>Je me suis principalement inspiré d'un site nommé <a href="https://humanbenchmark.com"
+                        target="_blank">HumanBenchmark</a>. J'ai recrée deux de ces mini-jeux / tests </p>
+            </div>
+            <div class="card">
+                <h2>Ressources utilisées</h2>
+                <ul>
+                    <li>
+                        <p>Documentation pour le développement web de mozilla : <a
+                                href="https://developer.mozilla.org/fr/docs/Web">https://developer.mozilla.org/fr/docs/Web</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>W3schools : <a href="https://www.w3schools.com">https://www.w3schools.com</a> (W3 = World
+                            Wide
+                            Web)</p>
+                    </li>
+                    <li>
+                        <p>Stack Overflow : <a href="https://stackoverflow.com/">https://stackoverflow.com/</a> (forum d'aide concernant la programmation)</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Outils utilisés</h2>
+                <h3>Git et GitHub</h3>
+                <p><a href="https://git-scm.com/">Git</a> est un logiciel de gestion de versions décentralisé, cela
+                    permet de gérer l'évolution du projet. On peut utiliser <a href="https://github.com/">GitHub</a>
+                    avec pour mieux gérer ses repositories et stocker son code dans le cloud. Il s'utilise en ligne de
+                    commande, dans son navigateur ou avec l'application. <a
+                        href="https://github.com/mdev9/fluffy-octo-disco">Voici le repo de ce site web</a> où l'on peut
+                    voir toutes les différentes version que j'ai commit et push dessus.</p>
+                <h3>IDE et extensions</h3>
+                <p>J'ai utilisé <a href="https://code.visualstudio.com/">Visual Studio Code</a>, un éditeur de code
+                    extensible, open source, gratuit et très pratique. Il intégre aussi directement Git et GitHub. Voici
+                    les extensions que j'ai le plus utilisées:</p>
+                <ul>
+                    <li class="float-none"><a
+                            href="https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug">
+                            Debugger for firefox</a>: permet de débugger les applications webs en temps réel directement
+                        dans Firefox.</li>
+                    <li class="float-none"><a
+                            href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a>
+                        : analyse le code et trouve les erreurs dans le javascript. Très customisable pour le faire
+                        fonctionner comme on veut. Il nécessite <a href="https://nodejs.org/en/">Node.js</a> (ou
+                        runtime équivalent) d'être installé sur votre ordinateur.</li>
+                    <li class="float-none"><a
+                            href="https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode">TabNine
+                            AI Autocomplete</a> : il permet d'autocompleter le code de façon très efficace car l'IA
+                        s'adapte à vos besoins et il vous permet donc de devenir plus productif.</li>
+                    <li class="float-none"><a
+                            href="https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify">Beautify</a>
+                        : permet de modifier le style du code dans l'éditeur et de le personaliser selon nos goûts
+                        de façon très détaillée. Il permet aussi de formatter la plus part des languages en
+                        utilisant alt+shift+F.</li>
+                </ul>
+                <h3>Navigateur</h3>
+                <p><a href="https://www.mozilla.org/fr/firefox/new/">Firefox</a>, équipé de ses outils pour développeur,
+                    très pratique pour mettre des points de débogage pour
+                    le javascript, ou faire des tests dans la console. Une <a
+                        href="https://www.mozilla.org/en-US/firefox/developer/">version spéciale pour développeurs</a>
+                    existe
+                    également incluant les derniers outils en version beta et des fonctionalitées expérimentales, un
+                    profil et un chemin séparés pour que vous puissiez facilement l’exécuter en même temps que Firefox.
+                </p>
+                <h3>Autre</h3>
+                <p><a href="https://fonts.google.com">https://fonts.google.com</a></p>
+                <p><a href="https://imagecolorpicker.com/">https://imagecolorpicker.com/</a></p>
+            </div>
+            <div class="card">
+                <h2>Site respectant les normes W3C</h2>
+                <h3>La norme W3C, qu'est-ce que c'est ?</h3>
+                <p>La <a href="https://www.w3.org/standards/">norme W3C</a> (World Wide Web Consortium) définit les
+                    standards techniques liés au web et surtout
+                    détermine les mêmes règles pour tous les développeurs du monde. L’idée est également de favoriser
+                    l’accès au web, au plus grand nombre.</p>
+                <h3>Pourquoi développer un site aux normes W3C ?</h3>
+                <p>Il peut s’avérer utile de respecter les normes W3C pour différentes raisons : pour votre
+                    référencement naturel, en effet, un site construit selon les normes W3C est plus facilement lisible
+                    par les moteurs de recherche. Il sera mieux référencé et votre visibilité sera donc d’autant plus
+                    importante.</p>
+                <h3>Vous souhaitez vérifier si votre site respecte les normes W3C ?</h3>
+                <p>L’organisme <a href="https://www.w3.org/">W3C</a> vous propose un outil pour l’examiner, <a
+                        href="https://validator.w3.org/">W3C validator</a>.</p>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+        <p>Copyright 2022 Challenge Lab</p>
+        <p><a href="webographie.html">Webographie</a></p>
+        <p><a href="https://github.com/mdev9/fluffy-octo-disco">GitHub</a></p>
+    </footer>
+</body>
+
+</html>
